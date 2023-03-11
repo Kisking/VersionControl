@@ -70,11 +70,29 @@ namespace UserMaintenance {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keresztnév.
+        ///   Looks up a localized string similar to Listából törlés.
+        /// </summary>
+        internal static string DeleteFromListbox {
+            get {
+                return ResourceManager.GetString("DeleteFromListbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teljesnév.
         /// </summary>
         internal static string FullName {
             get {
                 return ResourceManager.GetString("FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fájlba írás.
+        /// </summary>
+        internal static string WriteToFile {
+            get {
+                return ResourceManager.GetString("WriteToFile", resourceCulture);
             }
         }
     }
