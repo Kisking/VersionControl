@@ -22,7 +22,6 @@ namespace UserMaintenance
             label1.Text = Resource1.FullName;
             button1.Text = Resource1.Add;
             button2.Text = Resource1.WriteToFile;
-            button3.Text = Resource1.DeleteFromListbox;
 
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
@@ -37,28 +36,6 @@ namespace UserMaintenance
             };
             users.Add(u);
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.InitialDirectory = Application.StartupPath;
-            sfd.Filter = "Vesszövel tagolt szöveg (*.csv) |*.csv";
-            sfd.DefaultExt = "csv";
-            sfd.AddExtension = true;
-
-
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                using (StreamWriter sw = new StreamWriter(sfd.FileName, true, Encoding.UTF8)) // true hogy ne írja felül az eddigieket
-                {
-                    foreach (User u in users)
-                    {
-                        sw.WriteLine($"{u.ID};{u.FullName}");
-                    }
-                }
-            }
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             var selectID = ((Guid)listBox1.SelectedValue);   // az ID Guid típusu
