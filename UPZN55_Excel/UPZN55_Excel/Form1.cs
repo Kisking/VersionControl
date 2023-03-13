@@ -21,9 +21,6 @@ namespace UPZN55_Excel
         Excel.Workbook xlWB;
         Excel.Worksheet xlSheet;
         Excel.Range range;
-
-        public Application XlApp { get => xlApp; set => xlApp = value; }
-
         public Form1()
         {
             InitializeComponent();
@@ -40,16 +37,16 @@ namespace UPZN55_Excel
         {
             try
             {
-                XlApp = new Excel.Application();
+                xlApp = new Excel.Application();
 
-                xlWB = XlApp.Workbooks.Add(Missing.Value);
+                xlWB = xlApp.Workbooks.Add(Missing.Value);
 
                 xlSheet = xlWB.ActiveSheet;
 
                 CreateTable();
 
-                XlApp.Visible = true;
-                XlApp.UserControl = true;
+                xlApp.Visible = true;
+                xlApp.UserControl = true;
             }
             catch (Exception ex)
             {
@@ -57,9 +54,9 @@ namespace UPZN55_Excel
                 MessageBox.Show(errMsg, "Error");
 
                 xlWB.Close(false, Type.Missing, Type.Missing);
-                XlApp.Quit();
+                xlApp.Quit();
                 xlWB = null;
-                XlApp = null;
+                xlApp = null;
             }
         }
 
