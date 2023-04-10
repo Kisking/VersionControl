@@ -34,34 +34,6 @@ namespace gyár
             Factory = new CarFactory();
         }
 
-        private void createTimer_Tick(object sender, EventArgs e)
-        {
-            var toy = Factory.CreateNew();
-            toy.Left = -toy.Width;
-            toy.Top = 200;
-            _toys.Add(toy);
-            mainPanel.Controls.Add(toy);
-        }
-
-        private void conveyorTimer_Tick(object sender, EventArgs e)
-        {
-            var maxPosition = 0;
-            foreach (var toy in _toys)
-            {
-                toy.MoveToy();
-                if (toy.Left > maxPosition)
-                {
-                    maxPosition = toy.Left;
-                }
-            }
-
-            if (maxPosition >= 1000)
-            {
-                var oldestToy = _toys[0];
-                mainPanel.Controls.Remove(oldestToy);
-                _toys.Remove(oldestToy);
-            }
-        }
 
         private void DisplayNext()
         {
@@ -94,6 +66,35 @@ namespace gyár
             if (colorPicker.ShowDialog() != DialogResult.OK)
                 return;
             button.BackColor = colorPicker.Color;
+        }
+
+        private void createTimer_Tick(object sender, EventArgs e)
+        {
+            var toy = Factory.CreateNew();
+            toy.Left = -toy.Width;
+            toy.Top = 200;
+            _toys.Add(toy);
+            mainPanel.Controls.Add(toy);
+        }
+
+        private void conveyorTimer_Tick(object sender, EventArgs e)
+        {
+            var maxPosition = 0;
+            foreach (var toy in _toys)
+            {
+                toy.MoveToy();
+                if (toy.Left > maxPosition)
+                {
+                    maxPosition = toy.Left;
+                }
+            }
+
+            if (maxPosition >= 1000)
+            {
+                var oldestToy = _toys[0];
+                mainPanel.Controls.Remove(oldestToy);
+                _toys.Remove(oldestToy);
+            }
         }
     }
 }
