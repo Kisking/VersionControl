@@ -43,11 +43,13 @@
             // 
             this.createTimer.Enabled = true;
             this.createTimer.Interval = 3000;
+            this.createTimer.Tick += new System.EventHandler(this.createTimer_Tick);
             // 
             // conveyorTimer
             // 
             this.conveyorTimer.Enabled = true;
             this.conveyorTimer.Interval = 10;
+            this.conveyorTimer.Tick += new System.EventHandler(this.createTimer_Tick);
             // 
             // mainPanel
             // 
@@ -71,6 +73,7 @@
             this.button3.Size = new System.Drawing.Size(112, 35);
             this.button3.TabIndex = 3;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // label1
             // 
@@ -91,6 +94,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "BALL";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
             // 
@@ -101,6 +105,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "CAR";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Form1
             // 

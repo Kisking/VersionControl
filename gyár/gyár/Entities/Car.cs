@@ -12,7 +12,7 @@ namespace gyár.Entities
     {
         protected override void DrawImage(Graphics g)
         {
-            Image imageFiles = Image.FromFile("Images/car.png");
+            Image imageFiles = Image.FromFile("C:\\Users\\kinga\\Asztali gép\\IRF/car.png");
             g.DrawImage(imageFiles, new Rectangle(0, 0, Width, Height));
         }
     }

@@ -36,22 +36,31 @@ namespace gyár
 
         private void createTimer_Tick(object sender, EventArgs e)
         {
-
+            var toy = Factory.CreateNew();
+            toy.Left = -toy.Width;
+            toy.Top = 200;
+            _toys.Add(toy);
+            mainPanel.Controls.Add(toy);
         }
 
         private void conveyorTimer_Tick(object sender, EventArgs e)
         {
+            var maxPosition = 0;
+            foreach (var toy in _toys)
+            {
+                toy.MoveToy();
+                if (toy.Left > maxPosition)
+                {
+                    maxPosition = toy.Left;
+                }
+            }
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Factory = new CarFactory();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Factory = new BallFactory();
+            if (maxPosition >= 1000)
+            {
+                var oldestToy = _toys[0];
+                mainPanel.Controls.Remove(oldestToy);
+                _toys.Remove(oldestToy);
+            }
         }
 
         private void DisplayNext()
@@ -66,9 +75,25 @@ namespace gyár
             mainPanel.Controls.Add(_nextToy);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
+            Factory = new CarFactory();
+        }
 
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Factory = new BallFactory();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+
+            colorPicker.Color = button3.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+                return;
+            button.BackColor = colorPicker.Color;
         }
     }
 }
