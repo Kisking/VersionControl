@@ -20,6 +20,7 @@ namespace MintaZH
         public Form1()
         {
             InitializeComponent();
+            this.AutoScroll = true;
             ProcessXml();
             DisplayProducts();
         }
